@@ -1,0 +1,120 @@
+@import "mixins";
+
+:root {
+  --color-main: #5c2e4c;
+  --color-positive: #9cb11c;
+  --color-grey: #efefef;
+  --color-grey-dark: #cacaca;
+  --color-status-positive: #7ed321;
+  --color-status-warning: #fcbf00;
+  --color-status-negative: #da5173;
+  --shadow: 0 1px 5px rgba(100, 100, 100, 0.8);
+  --border-color: #ccc;
+  --main-grid-template-cols: 20% 80%;
+  --main-grid-gap: 1.2rem;
+  font-size: 14px;
+  font-family: 'Lato', sans-serif;
+  color: var(--color-main);
+
+  @include for-tablet-landscape-up {
+  }
+
+  @include for-desktop-up {
+    font-size: 16px;
+  }
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow-y: scroll;
+}
+
+.page {
+
+  @include for-tablet-landscape-up {
+    padding: 2% 10%;
+  }
+
+  @include for-desktop-up {
+    padding: 2% 15%;
+  }
+}
+
+button, input {
+  background-color: var(--color-grey);
+  border: 1px solid var(--border-color);
+  outline: none;
+}
+
+button:focus, input:focus {
+  border: 1px solid var(--color-main);
+}
+
+input {
+  background-color: white;
+  padding: 3px;
+}
+
+.split-content-sidebar {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 1rem;
+
+  @include for-tablet-landscape-up {
+    grid-template-columns: 4fr 1fr;
+    grid-template-areas: "content sidebar";
+    grid-gap: 2rem;
+    padding: 0;
+  }
+
+}
+
+/* Utility */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 0;
+}
+
+
+.display-flex {
+  display: flex;
+  width: 100%;
+}
+
+select {
+  color: var(--color-main);
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  padding: 5px 2.5rem 5px 0.5rem;
+  border: 1px solid var(--border-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline-color: var(--color-main);
+  background-image: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><title>Icon/pfeil_bottom</title><g fill="none" fill-rule="evenodd"><path d="M20.04 13.023c.302-.302.79-.302 1.093 0 .152.15.227.35.227.547 0 .198-.075.396-.227.546l-5.156 5.157c-.302.303-.792.303-1.093 0l-5.157-5.157c-.303-.302-.303-.79 0-1.093.302-.302.792-.302 1.093 0l4.61 4.61 4.61-4.61z" fill="%23414141"/><path stroke="%23414141" stroke-width="11" d="M-1147.5-215.5h1782v519h-1782z"/></g></svg>');
+  background-position: calc(100% - 0.5rem) center;
+  background-repeat: no-repeat;
+  background-color: var(--color-grey);
+  background-size: 2rem;
+}
+
+

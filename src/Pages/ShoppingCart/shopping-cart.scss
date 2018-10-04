@@ -1,0 +1,156 @@
+@import "../../mixins";
+
+.shopping-cart {
+  display: grid;
+  grid-template-areas: "items";
+  grid-gap: 2rem;
+
+  @include for-desktop-up {
+    grid-template-areas: "items";
+  }
+
+  .cart-overview {
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.6);
+    background-color: white;
+
+
+    table {
+      margin: 0 auto;
+      text-align: right;
+    }
+
+    td {
+      padding: 5px 1rem;
+    }
+
+    td:nth-child(1) {
+      text-align: left;
+    }
+
+    td:nth-child(2) {
+      text-align: right;
+    }
+
+    .checkout-button {
+      margin-top: 1rem;
+      padding: 5px 2rem;
+    }
+  }
+
+  ul {
+    display: inline-block;
+    grid-area: items;
+  }
+
+  .cart-item {
+
+    display: grid;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.6);
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-bottom: 0;
+    grid-template-columns: 4rem repeat(3, 1fr);
+    grid-gap: 1rem;
+    grid-template-areas: "image name name name" "image price quantity total";
+
+    @include for-tablet-portrait-up {
+      grid-template-areas: "image name price quantity total";
+      grid-template-columns: 4rem 3fr 1fr 1fr 1fr;
+    }
+  }
+
+  .proceed-to-checkout {
+    text-align: right;
+
+    div, a {
+      display: inline-block;
+      margin-left: 1rem;
+    }
+
+    .total {
+      font-family: monospace;
+    }
+  }
+
+  .product-name-quantity {
+    grid-area: name;
+
+    .product-name {
+      overflow: hidden;
+      max-height: 2.4em;
+    }
+
+    .availability {
+      padding: 5px 0;
+      font-size: 0.8rem;
+
+      b {
+        padding-right: 3px;
+      }
+    }
+  }
+
+  .product-price {
+    grid-area: price;
+    display: flex;
+    align-items: center;
+  }
+
+  .product-total-price {
+    grid-area: total;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-weight: 700;
+  }
+
+  .product-quantity {
+    grid-area: quantity;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .minus, .plus {
+      width: 2rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .plus {
+      text-align: right;
+    }
+
+    svg {
+      flex: 1;
+      width: 1rem;
+      vertical-align: middle;
+      stroke-width: 3px;
+    }
+
+  }
+
+  .image-wrapper {
+    grid-area: image;
+    position: relative;
+    padding: 4rem 0 0 0;
+    width: 4rem;
+
+    img {
+      position: absolute;
+      display: block;
+      max-width: 100%;
+      max-height: 66%;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+
+}

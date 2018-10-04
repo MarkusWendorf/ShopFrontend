@@ -1,0 +1,36 @@
+@import "../../mixins";
+
+.next-step {
+  margin-top: 3rem;
+  margin-left: auto;
+  text-align: right;
+  width: 100%;
+}
+
+.prev-step {
+  margin-top: 3rem;
+  margin-right: auto;
+  text-align: left;
+  width: 100%;
+}
+
+
+// Steps
+
+.steps {
+  display: flex;
+  text-align: center;
+  margin-bottom: 2rem;
+  user-select: none;
+
+  li {
+    flex: 1;
+    border-bottom: 2px solid var(--border-color);
+    padding: 5px;
+  }
+
+  li.active {
+    border-bottom: 2px solid var(--color-main);
+  }
+}
+

@@ -1,0 +1,40 @@
+@import "../../mixins";
+
+.cart-table {
+
+  .item {
+    display: grid;
+    grid-template-columns: 2fr 2rem 1fr;
+    border-bottom: 1px dashed;
+    padding: 5px;
+
+    &.total {
+      border: 0;
+    }
+
+    * {
+      padding: 3px;
+    }
+
+    @include for-desktop-up {
+      grid-template-columns: 4fr 1fr 2rem 1fr;
+    }
+
+  }
+
+  .id {
+    display: none;
+
+    @include for-desktop-up {
+      display: block;
+    }
+  }
+
+  .price {
+    text-align: right;
+  }
+
+  .quantity {
+    text-align: center;
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "shop-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack -p",
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/history": "^4.7.0",
+    "@types/lodash": "^4.14.116",
+    "@types/query-string": "^6.1.0",
+    "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.0.7",
+    "@types/react-redux": "^6.0.9",
+    "@types/react-router": "^4.0.31",
+    "@types/react-router-dom": "^4.3.1",
+    "@types/react-router-redux": "^5.0.16",
+    "@types/redux-logger": "^3.0.6",
+    "css-loader": "^1.0.0",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "ts-loader": "^5.2.1",
+    "tslint": "^5.11.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.1.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  },
+  "dependencies": {
+    "history": "^4.7.2",
+    "lodash": "^4.17.11",
+    "query-string": "^6.1.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
+  }
+}

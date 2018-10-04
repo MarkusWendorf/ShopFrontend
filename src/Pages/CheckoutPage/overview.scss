@@ -1,0 +1,83 @@
+@import "../../mixins";
+
+.overview-page {
+
+  h2 {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 0;
+
+    &.line {
+      overflow: hidden;
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    &.line:before,
+    &.line:after {
+      background-color: var(--color-main);
+      content: "";
+      display: inline-block;
+      height: 1px;
+      position: relative;
+      vertical-align: middle;
+      width: 50%;
+    }
+
+    &.line:before {
+      right: 0.5em;
+      margin-left: -50%;
+    }
+
+    &.line:after {
+      left: 0.5em;
+      margin-right: -50%;
+    }
+
+  }
+
+  .addresses {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 50%;
+    margin-bottom: 0.5rem;
+
+    .shipping, .billing {
+      flex: 1;
+      white-space: nowrap;
+      margin-bottom: 1rem;
+    }
+
+    .address > div{
+      line-height: 1.5rem;
+    }
+
+  }
+
+
+
+
+  .price-overview {
+    display: flex;
+    margin: 1rem 0;
+
+    > div {
+      flex: 1;
+    }
+
+    .center {
+      margin: 0 auto;
+      width: fit-content;
+    }
+
+    .price-tag {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .complete-order {
+    text-align: center;
+    padding: 0 0 5rem 0;
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "extends": ["tslint:latest", "tslint-react"],
+  "rules": {
+    "max-classes-per-file": false,
+    "interface-name": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "no-submodule-imports": false,
+    "curly": false,
+    "no-empty-interface": false,
+    "jsx-no-multiline-js": false,
+    "no-console": false,
+    "no-trailing-whitespace": false
+  }
+}

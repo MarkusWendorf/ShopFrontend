@@ -1,0 +1,53 @@
+@import "../../mixins";
+
+.sidebar {
+  position: absolute;
+  top: 3.4rem;
+  width: calc(100% + 1px);
+  display: none;
+
+
+  @include for-tablet-landscape-up {
+    position: relative;
+    top: 0;
+    display: block;
+  }
+
+}
+
+.sidebar-list {
+  background-color: white;
+  border: 1px solid var(--border-color);
+
+  li.menu-head {
+    display: none;
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: var(--color-grey);
+    cursor: default;
+
+    @include for-tablet-landscape-up {
+      display: block;
+    }
+  }
+
+  a, .menu-head {
+    display: block;
+    line-height: 3rem;
+    text-align: left;
+    padding-left: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+
+    @include for-tablet-landscape-up {
+      font-size: 0.8rem;
+      line-height: 2rem;
+    }
+  }
+
+  a:hover {
+    background-color: var(--color-grey);
+  }
+
+}
+

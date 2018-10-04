@@ -1,0 +1,41 @@
+@import "../../mixins";
+
+.status-dot {
+  display: inline-block;
+  border-radius: 50px;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+}
+
+.dot-1 {
+  background-color: var(--color-status-negative);
+}
+
+.dot-2 {
+  background-color: var(--color-status-warning);
+}
+
+.dot-3 {
+  background-color: var(--color-status-positive);
+}
+
+.breadcrumb {
+  color: hsl(0,0, 50%);
+}
+
+.status-text {
+
+  &.status-0 {
+    color: var(--color-status-positive);
+  }
+
+  &.status-1 {
+    color: var(--color-status-negative);
+  }
+
+  &.status-2 {
+    color: var(--color-status-warning);
+  }
+
+}
