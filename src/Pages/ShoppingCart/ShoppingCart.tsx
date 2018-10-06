@@ -35,6 +35,7 @@ class ShoppingCart extends React.Component<Props, {}> {
 
         const items = cartItems.map((item: CartItem) => (
             <CartItemUi
+                key={item.product.id}
                 item={item}
                 addOne={this.props.addOne}
                 removeOne={this.props.removeOne}

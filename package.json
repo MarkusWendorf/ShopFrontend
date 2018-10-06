@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --port 4444",
     "build": "webpack -p",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'"
   },
