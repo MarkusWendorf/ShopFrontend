@@ -46,6 +46,7 @@ body {
 }
 
 button, input {
+  transition: all 0.2s;
   background-color: var(--color-grey);
   border: 1px solid var(--border-color);
   outline: none;

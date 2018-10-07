@@ -28,6 +28,8 @@ export default class SearchOptions extends React.PureComponent<Props, State> {
                             value={this.props.priceFrom}
                             placeholder={"von"}
                             onChange={this.props.onChange}
+                            min="0"
+                            max={this.props.priceTo}
                         />
 
                         <span>-</span>
@@ -38,6 +40,7 @@ export default class SearchOptions extends React.PureComponent<Props, State> {
                             value={this.props.priceTo}
                             placeholder={"bis"}
                             onChange={this.props.onChange}
+                            min={this.props.priceFrom}
                         />
                     </div>
                 </span>
