@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import "./login.scss";
 import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 import {Redirect} from "react-router";
+import LoginRegisterForm from "../../Components/LoginRegisterForm/LoginRegisterForm";
 
 interface OwnProps {
 
@@ -45,16 +46,8 @@ class LoginPage extends React.Component<Props, State> {
                     </span>
                 </div>
 
-                <form id="login-register-form" onSubmit={this.handleSubmit}>
-                    <label htmlFor="login-register-email">Email</label>
-                    <input id="login-register-email" type="email" name="email"/>
-                    <label htmlFor="login-register-password">Passwort</label>
-                    <input id="login-register-password" type="password" name="password"/>
-                    <div className="display-flex">
-                        <span className="flex1"/>
-                        <button id="login-register-submit" type="submit">Anmelden</button>
-                    </div>
-                </form>
+
+                <LoginRegisterForm onSubmit={this.handleSubmit} submitText={"Login"}/>
                 <p>{error}</p>
             </div>
         );
@@ -70,14 +63,14 @@ class LoginPage extends React.Component<Props, State> {
     }
 }
 
-const mapStateToProps = ({auth}: { auth: StoreAuth, routing: StoreRouting }, ownProps: OwnProps): StateToPropsType => ({
+const mapStateToProps = ({auth}: { auth: StoreAuth }, ownProps: OwnProps): StateToPropsType => ({
     authError: auth.authError,
     isFetching: auth.isFetching,
     token: auth.token,
 });
 
 const mapDispatchToProps = (dispatch: any): DispatchToPropsType => ({
-    login: (email: string, password: string) => dispatch(login(email, password)),
+    login: (email, password) => dispatch(login(email, password)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

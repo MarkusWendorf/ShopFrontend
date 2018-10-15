@@ -1,4 +1,12 @@
-import {AddressInformation, CartItem, JwtClaims, Product, ProductsByCategory, ValidatedCart} from "../../Util/model";
+import {
+    AddressInformation,
+    AutocompleteProduct,
+    CartItem,
+    JwtClaims,
+    Product,
+    ProductsByCategory,
+    ValidatedCart
+} from "../../Util/model";
 
 export interface StoreState {
     auth: StoreAuth;
@@ -38,7 +46,7 @@ export interface StoreProducts {
     queryProductsRequest: {
         products: Product[];
         page: number;
-        isLast: boolean;
+        lastPage: number;
         errorMessage: string;
         isFetching: boolean;
     };
@@ -46,6 +54,7 @@ export interface StoreProducts {
         categories: string[];
         errorMessage: string;
     };
+    autocomplete: AutocompleteProduct[];
 }
 
 export interface StoreCart {

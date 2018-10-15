@@ -21,7 +21,7 @@ interface StateToPropsType {
     errorMessage: string;
     products: Product[];
     page: number;
-    isLast: boolean;
+    lastPage: number;
 }
 
 interface DispatchToPropsType {
@@ -61,7 +61,7 @@ class SearchResultPage extends React.Component<Props, State> {
             <Pagination
                 current={this.props.page}
                 onChange={this.pageChange}
-                lastPage={this.props.isLast}
+                lastPage={this.props.lastPage}
             />
         );
 
@@ -79,7 +79,7 @@ class SearchResultPage extends React.Component<Props, State> {
 
     private pageChange = (newPage: number, next: boolean) => {
 
-        if (next && this.props.isLast) {
+        if (next && newPage > this.props.lastPage) {
             return;
         }
 
@@ -101,7 +101,7 @@ const mapStateToProps = ({products}: { products: StoreProducts }, ownProps: OwnP
         isFetching: queryResult.isFetching,
         errorMessage: queryResult.errorMessage,
         page: queryResult.page,
-        isLast: queryResult.isLast,
+        lastPage: queryResult.lastPage,
         products: queryResult.products,
     };
 };

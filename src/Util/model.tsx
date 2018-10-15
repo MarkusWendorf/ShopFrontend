@@ -10,6 +10,13 @@ export interface Product {
     };
 }
 
+export interface AutocompleteProduct {
+    id: string;
+    category: string;
+    pname: string;
+    highlight: string;
+}
+
 export interface ApiResponse {
     status: number;
     data: any;

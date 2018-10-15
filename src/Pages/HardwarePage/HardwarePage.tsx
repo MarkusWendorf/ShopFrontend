@@ -4,6 +4,7 @@ import "./hardware-page.scss";
 import {StoreProducts} from "../../Redux/Store/Store";
 import {connect} from "react-redux";
 import {fetchCategoryList} from "../../Redux/ActionCreators/Products";
+import {searchPath} from "../../Util/config";
 
 interface OwnProps {
 
@@ -30,7 +31,7 @@ class HardwarePage extends React.Component<Props, {}> {
 
         const sorted = this.props.categories.sort();
         const categories = sorted.map((category: string) => (
-            <Link className="category-tile" key={category} to={"/search?category=" + category}>
+            <Link className="category-tile" key={category} to={searchPath + "?category=" + category}>
                 {category}
             </Link>
         ));

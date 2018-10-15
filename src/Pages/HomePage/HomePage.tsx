@@ -1,7 +1,4 @@
 import * as React from "react";
-import {StoreProducts, StoreState} from "../../Redux/Store/Store";
-import {connect} from "react-redux";
-import {fetchCategory} from "../../Redux/ActionCreators/Products";
 import "./homepage.scss";
 import {
     CloudFrontIcon,
@@ -15,8 +12,7 @@ import {
 } from "../../Components/Icons/Icons";
 
 interface Props {
-    productsStore: StoreProducts;
-    loadCategory: (group: string, page: number) => void;
+
 }
 
 interface State {
@@ -79,16 +75,4 @@ class HomePage extends React.Component<Props, State> {
     }
 }
 
-const mapStateToProps = (state: StoreState) => {
-    return {
-        productsStore: state.products,
-    };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-        loadCategory: (group: string, page: number) => dispatch(fetchCategory(group, page)),
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default HomePage;

@@ -56,11 +56,11 @@
     border-bottom: 0;
     grid-template-columns: 4rem repeat(3, 1fr);
     grid-gap: 1rem;
-    grid-template-areas: "image name name name" "image price quantity total";
+    grid-template-areas: "image name name name name" "image price quantity total trash";
 
     @include for-tablet-portrait-up {
-      grid-template-areas: "image name price quantity total";
-      grid-template-columns: 4rem 3fr 1fr 1fr 1fr;
+      grid-template-areas: "image name price quantity total trash";
+      grid-template-columns: 4rem 3fr 1fr 1fr 1fr 1.5rem;
     }
   }
 
@@ -93,6 +93,14 @@
         padding-right: 3px;
       }
     }
+  }
+
+  .product-remove {
+    grid-area: trash;
+    display: flex;
+    align-items: center;
+    width: 1.3rem;
+    cursor: pointer;
   }
 
   .product-price {

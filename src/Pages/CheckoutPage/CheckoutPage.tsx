@@ -58,27 +58,26 @@ class CheckoutPage extends React.Component<PropsType, State> {
 
     public render() {
 
-        const {
-            checkout, currentStep, validatedCart, checkoutAddAddresses,
-            checkoutAddCart, resetToStep0, cartError,
-        } = this.props;
+        const checkout = this.props.checkout;
+        const validatedCart = this.props.validatedCart;
+        const currentStep = this.props.currentStep;
 
         if (validatedCart.isFetching) return <LoadingSpinner/>;
 
         let stepUi;
-        switch (this.props.currentStep) {
+        switch (currentStep) {
             case 1:
                 stepUi = (
                     <ShippingAndBillingAddress
                         addresses={checkout.address}
-                        onNextStep={checkoutAddAddresses}
+                        onNextStep={this.props.checkoutAddAddresses}
                     />
                 );
                 break;
             case 2:
                 stepUi = (
                     <Overview
-                        checkout={this.props.checkout}
+                        checkout={checkout}
                         onPurchase={this.completePurchase}
                     />
                 );
@@ -87,7 +86,7 @@ class CheckoutPage extends React.Component<PropsType, State> {
                 stepUi = (
                     <PurchaseComplete
                         orderId={checkout.orderId}
-                        resetToStep0={resetToStep0}
+                        resetToStep0={this.props.resetToStep0}
                         error={checkout.errorMessage}
                     />
                 );
@@ -96,8 +95,8 @@ class CheckoutPage extends React.Component<PropsType, State> {
                 stepUi = (
                     <CartOverview
                         validCart={validatedCart}
-                        onNextStep={checkoutAddCart}
-                        error={cartError}
+                        onNextStep={this.props.checkoutAddCart}
+                        error={this.props.cartError}
                     />
                 );
         }
@@ -143,13 +142,12 @@ const mapStateToProps = ({cart, checkout}: { cart: StoreCart, checkout: StoreChe
 });
 
 const mapDispatchToProps = (dispatch: any): DispatchToPropsType => ({
-    validateCart: (cart: CartItem[], existingId?: string) => dispatch(validateCart(cart, existingId)),
+    validateCart: (cart, existingId?) => dispatch(validateCart(cart, existingId)),
     resetToStep0: () => dispatch(new CheckoutResetToStep0()),
-    purchase: (cartId: string, address: AddressInformation) => dispatch(purchase(cartId, address)),
-    redirectTo: (path: string) => dispatch(push(path)),
-    checkoutAddCart: (cart: ValidatedCart) => dispatch(new CheckoutAddCart(cart)),
-    checkoutAddAddresses: (shipping: Address, billing: Address) =>
-        dispatch(new CheckoutAddAddresses(shipping, billing)),
+    purchase: (cartId, address) => dispatch(purchase(cartId, address)),
+    redirectTo: (path) => dispatch(push(path)),
+    checkoutAddCart: (cart) => dispatch(new CheckoutAddCart(cart)),
+    checkoutAddAddresses: (shipping, billing) => dispatch(new CheckoutAddAddresses(shipping, billing)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckoutPage);

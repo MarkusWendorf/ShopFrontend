@@ -1,4 +1,4 @@
-import {StoreCart, StoreAuth, StoreState, StoreCheckout} from "./Store";
+import {StoreCart, StoreAuth, StoreState} from "./Store";
 import rootReducer from "../Reducers/rootReducer";
 import {AnyAction} from "redux";
 
@@ -15,7 +15,6 @@ export const restoreState = (): StoreState => {
 
     const authString = localStorage.getItem("auth");
     const cartString = localStorage.getItem("cart");
-    const checkoutString = localStorage.getItem("checkout");
     const initialState = getInitialState();
 
     if (authString && cartString) {

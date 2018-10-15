@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {StoreCart} from "../../Redux/Store/Store";
 import {SignInIcon} from "../../Components/Icons/Icons";
 import {cartTotal, formatPrice} from "../../Util/util";
-import {AddToCart, RemoveFromCart} from "../../Redux/ActionTypes/CartActions";
+import {AddToCart, DiscardProduct, RemoveFromCart} from "../../Redux/ActionTypes/CartActions";
 import {Link} from "react-router-dom";
 import ButtonWithIcon from "../../Components/Buttons/ButtonWithIcon";
 import CartItemUi from "./CartItemUi";
@@ -19,6 +19,7 @@ interface StateToPropsType {
 interface DispatchToPropsType {
     addOne: (p: Product) => void;
     removeOne: (p: Product) => void;
+    discard: (p: Product) => void;
 }
 
 type Props = StateToPropsType & DispatchToPropsType & OwnProps;
@@ -39,6 +40,7 @@ class ShoppingCart extends React.Component<Props, {}> {
                 item={item}
                 addOne={this.props.addOne}
                 removeOne={this.props.removeOne}
+                discard={this.props.discard}
             />
         ));
 
@@ -65,6 +67,7 @@ const mapStateToProps = ({cart}: { cart: StoreCart }, ownProps: OwnProps): State
 const mapDispatchToProps = (dispatch: any): DispatchToPropsType => ({
     addOne: (product: Product) => dispatch(new AddToCart(product)),
     removeOne: (product: Product) => dispatch(new RemoveFromCart(product)),
+    discard: (product: Product) => dispatch(new DiscardProduct(product)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart);

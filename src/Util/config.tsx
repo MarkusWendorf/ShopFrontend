@@ -1,4 +1,11 @@
 // declare var __API__: string;
 // export const API_ROOT = __API__;
-export const API_ROOT = "http://localhost:3000/";
-export const productPath = "/products/";
+export const API_ROOT = "http://localhost:3000";
+export const searchPath = "/search";
+export const categoriesPath = "/categories";
+export const productsPath = "/products";
+export const registerPath = "/register";
+export const loginPath = "/login";
+export const cartPath = "/cart";
+export const orderPath = "/order";
+export const autocompletePath = "/autocomplete";

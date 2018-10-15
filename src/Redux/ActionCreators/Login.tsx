@@ -9,6 +9,7 @@ import {
 } from "../ActionTypes/AuthActions";
 import {Dispatch} from "redux";
 import {push, RouterAction} from "react-router-redux";
+import {loginPath, registerPath} from "../../Util/config";
 
 export const login = (email: string, password: string) => {
 
@@ -17,7 +18,7 @@ export const login = (email: string, password: string) => {
         try {
             dispatch(new AuthRequest());
             const body = {email, password};
-            const response = await postApi("login", body);
+            const response = await postApi(loginPath, body);
 
             if (response.status !== 200) {
                 dispatch(new LoginFailed(response.error));
@@ -43,7 +44,7 @@ export const register = (email: string, password: string) => {
         try {
             dispatch(new AuthRequest());
             const body = {email, password};
-            const response = await postApi("register", body);
+            const response = await postApi(registerPath, body);
 
             if (response.status !== 200) {
                 dispatch(new RegisterFailed(response.error));

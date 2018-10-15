@@ -1,4 +1,4 @@
-import {Product} from "../../Util/model";
+import {AutocompleteProduct, Product} from "../../Util/model";
 
 export type ProductAction =
     FetchCategoryRequest
@@ -12,7 +12,8 @@ export type ProductAction =
     | QueryProductsClear
     | QueryProductsSuccessful
     | FetchCategoryListSuccessful
-    | FetchCategoryListFailed;
+    | FetchCategoryListFailed
+    | AutocompleteSuccessful;
 
 export enum ProductActions {
     FETCH_CATEGORY_REQUEST = "FETCH_CATEGORY_REQUEST",
@@ -27,6 +28,7 @@ export enum ProductActions {
     QUERY_PRODUCTS_CLEAR = "QUERY_PRODUCTS_CLEAR",
     FETCH_CATEGORY_LIST_SUCCESSFUL = "FETCH_CATEGORY_LIST_SUCCESSFUL",
     FETCH_CATEGORY_LIST_FAILED = "FETCH_CATEGORY_LIST_FAILED",
+    AUTOCOMPLETE_SUCCESSFUL = "AUTOCOMPLETE_SUCCESSFUL",
 }
 
 export class FetchCategoryListSuccessful {
@@ -82,17 +84,24 @@ export class QueryProductsRequest {
 export class QueryProductsSuccessful {
     public readonly type = ProductActions.QUERY_PRODUCTS_SUCCESSFUL;
 
-    constructor(public products: Product[], public page: number, public isLast: boolean) {
+    constructor(public products: Product[], public page: number, public lastPage: number) {
     }
 }
 
 export class QueryProductsFailed {
     public readonly type = ProductActions.QUERY_PRODUCTS_FAILED;
 
-    constructor(public  error: string) {
+    constructor(public error: string) {
     }
 }
 
 export class QueryProductsClear {
     public readonly type = ProductActions.QUERY_PRODUCTS_CLEAR;
+}
+
+export class AutocompleteSuccessful {
+    public readonly type = ProductActions.AUTOCOMPLETE_SUCCESSFUL;
+
+    constructor(public matches: AutocompleteProduct[]) {
+    }
 }

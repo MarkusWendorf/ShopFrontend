@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import {formatPrice, linkToProduct, quantityStatus} from "../../Util/util";
 import {StatusText} from "../../Components/Indicator/StatusText";
-import {MinusIcon, PlusIcon} from "../../Components/Icons/Icons";
+import {MinusIcon, PlusIcon, TrashIcon} from "../../Components/Icons/Icons";
 import * as React from "react";
 import {CartItem, Product} from "../../Util/model";
 
@@ -9,13 +9,15 @@ interface Props {
     item: CartItem;
     removeOne: (p: Product) => void;
     addOne: (p: Product) => void;
+    discard: (p: Product) => void;
 }
 
 const CartItemUi = (props: Props) => {
 
-    const {item, removeOne, addOne} = props;
+    const {item, removeOne, addOne, discard} = props;
     const onAddOne = (e: any) => addOne(item.product);
     const onRemoveOne = (e: any) => removeOne(item.product);
+    const onDiscard = (e: any) => discard(item.product);
 
     return (
         <li className="cart-item" key={item.product.id}>
@@ -40,6 +42,9 @@ const CartItemUi = (props: Props) => {
             </div>
             <div className="product-total-price">
                 {formatPrice(item.product.price * item.quantity)}
+            </div>
+            <div className="product-remove" onClick={onDiscard}>
+                <TrashIcon/>
             </div>
             <Link className="image-wrapper" to={linkToProduct(item.product.id)}>
                 <img src={item.product.imgurl}/>

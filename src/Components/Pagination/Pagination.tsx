@@ -5,7 +5,7 @@ import {ChevronLeftIcon, ChevronRightIcon} from "../Icons/Icons";
 interface Props {
     current: number;
     onChange: (newPage: number, next: boolean) => void;
-    lastPage?: boolean;
+    lastPage: number;
 }
 
 const Pagination = (props: Props) => {
@@ -17,6 +17,7 @@ const Pagination = (props: Props) => {
 
     return (
         <div className="pagination">
+            <div>{current + "|" + props.lastPage}</div>
             <div className="prev" onClick={prev}>
                 <ChevronLeftIcon
                     style={disable(current === 1)}
@@ -27,7 +28,7 @@ const Pagination = (props: Props) => {
 
             <div className="next" onClick={next}>
                 <ChevronRightIcon
-                    style={disable(!!props.lastPage)}
+                    style={disable(props.lastPage === current)}
                 />
             </div>
         </div>

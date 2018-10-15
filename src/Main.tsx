@@ -3,7 +3,7 @@ import {Provider} from "react-redux";
 import {ConnectedRouter} from "react-router-redux";
 import Navigation from "./Components/Navigation/Navigation";
 import {Route, Switch} from "react-router";
-import {productPath} from "./Util/config";
+import {productsPath} from "./Util/config";
 import AuthenticatedRoute from "./Components/AuthenticatedRoute/AuthenticatedRoute";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 import Sidebar from "./Components/Sidebar/Sidebar";
@@ -45,7 +45,7 @@ class Main extends React.Component<Props, State> {
                                 <Route path="/login" component={LoginPage}/>
                                 <Route path="/logout" component={LogoutPage}/>
                                 <Route path="/register" component={RegisterPage}/>
-                                <Route path={productPath + ":id"} component={ProductPage}/>
+                                <Route path={productsPath + "/:id"} component={ProductPage}/>
                                 <Route exact={true} path="/hardware/" component={HardwarePage}/>
                                 <Route path="/search" component={SearchResultPage}/>
                                 <Route path="/warenkorb" component={ShoppingCart}/>

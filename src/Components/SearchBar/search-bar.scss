@@ -2,6 +2,7 @@
 
 
 .search-bar {
+  position: relative;
   margin-bottom: 1rem;
 
   .search-input {
@@ -30,6 +31,29 @@
 
     &:focus {
       border: 1px solid var(--color-main);
+    }
+  }
+}
+
+.autocomplete {
+  position: absolute;
+  display: block;
+  list-style-type: none;
+  width: 100%;
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  background-color: white;
+  z-index: 999;
+
+  li {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+      background-color: var(--color-grey);
     }
   }
 }

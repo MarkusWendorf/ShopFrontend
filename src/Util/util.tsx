@@ -1,11 +1,11 @@
 import {ApiResponse, CartItem} from "./model";
-import {API_ROOT, productPath} from "./config";
+import {API_ROOT, productsPath} from "./config";
 import {getToken} from "../index";
 import {Logout} from "../Redux/ActionTypes/AuthActions";
 import {push} from "react-router-redux";
 
 export const linkToProduct = (id: string) => {
-    return productPath + id;
+    return productsPath + "/" + id;
 };
 
 export const formatPrice = (p: number): string => {

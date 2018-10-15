@@ -1,6 +1,6 @@
 import {StoreCart} from "../Store/Store";
 import {CartAction, CartActions} from "../ActionTypes/CartActions";
-import {CartItem, Product} from "../../Util/model";
+import {CartItem} from "../../Util/model";
 import {CheckoutAction, CheckoutActions} from "../ActionTypes/CheckoutActions";
 
 const initialState: StoreCart = {
@@ -37,18 +37,19 @@ const cartReducer = (state: StoreCart = initialState, action: CartAction | Check
 
             for (const item of copyItems) {
                 if (item.product.id === idToRemove) {
-                    item.quantity -= 1;
-
-                    if (item.quantity < 1) {
-                        const removed = copyItems.filter((i: CartItem) => i.product.id !== idToRemove);
-                        return {...state, items: removed};
-                    }
+                    if (item.quantity > 1) item.quantity -= 1;
 
                     return {...state, items: copyItems};
                 }
             }
 
             return state;
+
+        case CartActions.DISCARD_PRODUCT:
+            const removeId = action.product.id;
+            const newItems = state.items.filter((item: CartItem) => item.product.id !== removeId);
+
+            return {...state, items: newItems};
 
         case CartActions.VALIDATE_CART_REQUEST:
             return {...state, validatedByServer: {errorMessage: "", isFetching: true, items: [], total: 0}};

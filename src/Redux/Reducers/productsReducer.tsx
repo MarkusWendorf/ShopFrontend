@@ -1,6 +1,5 @@
 import {StoreProducts} from "../Store/Store";
 import {ProductAction, ProductActions} from "../ActionTypes/ProductActions";
-import {Product} from "../../Util/model";
 
 const initialState: StoreProducts = {
     productRequest: {
@@ -18,12 +17,13 @@ const initialState: StoreProducts = {
         errorMessage: "",
         products: [],
         page: 1,
-        isLast: false,
+        lastPage: 1,
     },
     categoryList: {
         categories: [],
         errorMessage: "",
     },
+    autocomplete: [],
 };
 
 const productsReducer = (state: StoreProducts = initialState, action: ProductAction): StoreProducts => {
@@ -82,7 +82,7 @@ const productsReducer = (state: StoreProducts = initialState, action: ProductAct
             return {
                 ...state, queryProductsRequest: {
                     products: state.queryProductsRequest.products,
-                    page: 1, isLast: false, isFetching: true, errorMessage: "",
+                    page: 1, lastPage: 1, isFetching: true, errorMessage: "",
                 },
             };
 
@@ -92,7 +92,7 @@ const productsReducer = (state: StoreProducts = initialState, action: ProductAct
                 ...state, queryProductsRequest: {
                     products: action.products,
                     page: action.page,
-                    isLast: action.isLast,
+                    lastPage: action.lastPage,
                     errorMessage: "",
                     isFetching: false,
                 },
@@ -103,22 +103,26 @@ const productsReducer = (state: StoreProducts = initialState, action: ProductAct
                 ...state, queryProductsRequest: {
                     products: state.queryProductsRequest.products,
                     page: state.queryProductsRequest.page,
-                    isLast: false,
+                    lastPage: 1,
                     errorMessage: action.error,
                     isFetching: false,
                 },
             };
-        case ProductActions.QUERY_PRODUCTS_CLEAR: {
+        case ProductActions.QUERY_PRODUCTS_CLEAR:
 
             return {
                 ...state, queryProductsRequest: {
                     products: [],
-                    page: 1, isLast: false,
+                    page: 1, lastPage: 1,
                     errorMessage: "",
                     isFetching: false,
                 },
             };
-        }
+
+        case ProductActions.AUTOCOMPLETE_SUCCESSFUL:
+
+            return {...state, autocomplete: action.matches};
+
         default:
             return state;
     }

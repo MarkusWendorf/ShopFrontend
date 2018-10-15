@@ -1,12 +1,9 @@
-import {RouterAction} from "react-router-redux";
 import {Dispatch} from "redux";
 import {getApi} from "../../Util/util";
 import {
-    FetchCategoryFailed,
+    AutocompleteSuccessful,
     FetchCategoryListFailed,
     FetchCategoryListSuccessful,
-    FetchCategoryRequest,
-    FetchCategorySuccessful,
     FetchProductFailed,
     FetchProductRequest,
     FetchProductSuccessful,
@@ -17,27 +14,7 @@ import {
     QueryProductsSuccessful,
 } from "../ActionTypes/ProductActions";
 import * as queryString from "querystring";
-
-export const fetchCategory = (category: string, page: number, queryStr?: string) => {
-
-    return async (dispatch: Dispatch<ProductAction | RouterAction>) => {
-
-        try {
-            dispatch(new FetchCategoryRequest());
-            // await sleepDebug(2000);
-            const response = await getApi("categories/" + category + "/" + page + (queryStr || ""));
-
-            if (response.status !== 200) {
-                dispatch(new FetchCategoryFailed(response.error));
-                return;
-            }
-
-            dispatch(new FetchCategorySuccessful(category, response.data, response.links));
-        } catch (err) {
-            dispatch(new FetchCategoryFailed("Die Produkt-Kategorie konnte nicht geladen werden"));
-        }
-    };
-};
+import {autocompletePath, categoriesPath, productsPath, searchPath} from "../../Util/config";
 
 export const fetchProduct = (id: string) => {
 
@@ -46,7 +23,7 @@ export const fetchProduct = (id: string) => {
         try {
             dispatch(new FetchProductRequest());
             // await sleepDebug(2000);
-            const response = await getApi("products/" + id);
+            const response = await getApi(productsPath + "/" + id);
 
             if (response.status !== 200) {
                 dispatch(new FetchProductFailed(response.error));
@@ -66,7 +43,7 @@ export const fetchCategoryList = () => {
     return async (dispatch: Dispatch<ProductAction>) => {
 
         try {
-            const response = await getApi("categories");
+            const response = await getApi(categoriesPath);
 
             if (response.status !== 200) {
                 dispatch(new FetchCategoryListFailed(response.error));
@@ -93,7 +70,7 @@ export const queryProducts = (stringQuery: string) => {
             }
 
             dispatch(new QueryProductsRequest());
-            const response = await getApi("query?" + stringQuery);
+            const response = await getApi(searchPath + "?" + stringQuery);
 
             if (response.status !== 200) {
                 dispatch(new QueryProductsFailed(response.error));
@@ -101,11 +78,33 @@ export const queryProducts = (stringQuery: string) => {
             }
 
             const page = +response.links.page;
-            const isLast = response.links.isLast;
-            dispatch(new QueryProductsSuccessful(response.data, page, isLast));
+            const last = +response.links.last;
+            dispatch(new QueryProductsSuccessful(response.data, page, last));
 
         } catch (err) {
             dispatch(new QueryProductsFailed(err.toString()));
+        }
+    };
+};
+
+export const getAutocomplete = (search: string) => {
+
+    return async (dispatch: Dispatch<ProductAction>) => {
+
+        try {
+
+            // dispatch(new QueryProductsRequest());
+            const response = await getApi(autocompletePath + "/" + search);
+
+            if (response.status !== 200) {
+                console.log("autocomplete !== 200");
+                return;
+            }
+
+            dispatch(new AutocompleteSuccessful(response.data));
+
+        } catch (err) {
+            console.log("autocomplete err", err);
         }
     };
 };

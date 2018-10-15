@@ -9,6 +9,7 @@ import {
     CheckoutPurchaseRequest,
     CheckoutPurchaseSuccessful,
 } from "../ActionTypes/CheckoutActions";
+import {cartPath, orderPath} from "../../Util/config";
 
 export const validateCart = (cart: CartItem[], existingId?: string) => {
 
@@ -16,7 +17,7 @@ export const validateCart = (cart: CartItem[], existingId?: string) => {
 
         try {
             dispatch(new ValidateCartRequest());
-            const response = await postApiAuth("cart", {items: cart, cart_id: existingId}, dispatch);
+            const response = await postApiAuth(cartPath, {items: cart, cart_id: existingId}, dispatch);
 
             if (response.status !== 200) {
                 dispatch(new ValidateCartFailed(response.error));
@@ -37,7 +38,7 @@ export const purchase = (cartId: string, address: AddressInformation) => {
 
         try {
             dispatch(new CheckoutPurchaseRequest());
-            const response = await postApiAuth("order", {cart_id: cartId, address}, dispatch);
+            const response = await postApiAuth(orderPath, {cart_id: cartId, address}, dispatch);
 
             if (response.status !== 200) {
                 dispatch(new CheckoutPurchaseFailed(response.error));

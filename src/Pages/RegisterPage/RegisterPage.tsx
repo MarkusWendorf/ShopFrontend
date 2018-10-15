@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {StoreAuth} from "../../Redux/Store/Store";
 import {register} from "../../Redux/ActionCreators/Login";
 import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
+import LoginRegisterForm from "../../Components/LoginRegisterForm/LoginRegisterForm";
 
 interface OwnProps {
 
@@ -41,16 +42,7 @@ class RegisterPage extends React.Component<Props, State> {
                     </span>
                 </div>
 
-                <form id="login-register-form" onSubmit={this.handleSubmit}>
-                    <label htmlFor="login-register-email">Email</label>
-                    <input id="login-register-email" name="email"/>
-                    <label htmlFor="login-register-password">Passwort</label>
-                    <input id="login-register-password" type="password" name="password"/>
-                    <div className="display-flex">
-                        <span className="flex1"/>
-                        <button id="login-register-submit" type="submit">Registrieren</button>
-                    </div>
-                </form>
+                <LoginRegisterForm onSubmit={this.handleSubmit} submitText={"Registrieren"}/>
                 <p>{error}</p>
             </div>
         );

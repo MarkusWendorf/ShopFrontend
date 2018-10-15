@@ -3,16 +3,15 @@ import {Product, ValidatedCart} from "../../Util/model";
 export enum CartActions {
     ADD_TO_CART = "ADD_TO_CART",
     REMOVE_FROM_CART = "REMOVE_FROM_CART",
+    DISCARD_PRODUCT = "DISCARD_PRODUCT",
     VALIDATE_CART_REQUEST = "VALIDATE_CART_REQUEST",
     VALIDATE_CART_SUCCESSFUL = "VALIDATE_CART_SUCCESSFUL",
     VALIDATE_CART_FAILED = "VALIDATE_CART_FAILED",
-    PURCHASE_REQUEST = "PURCHASE_REQUEST",
-    PURCHASE_SUCCESSFUL = "PURCHASE_SUCCESSFUL",
-    PURCHASE_FAILED = "PURCHASE_FAILED",
 }
 
 export type CartAction = AddToCart
     | RemoveFromCart
+    | DiscardProduct
     | ValidateCartRequest
     | ValidateCartSuccessful
     | ValidateCartFailed;
@@ -26,6 +25,13 @@ export class AddToCart {
 
 export class RemoveFromCart {
     public readonly type = CartActions.REMOVE_FROM_CART;
+
+    constructor(public product: Product) {
+    }
+}
+
+export class DiscardProduct {
+    public readonly type = CartActions.DISCARD_PRODUCT;
 
     constructor(public product: Product) {
     }
