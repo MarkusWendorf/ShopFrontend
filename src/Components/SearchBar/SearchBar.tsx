@@ -50,7 +50,7 @@ class SearchBar extends React.Component<Props, State> {
 
         this.state = {
             showAutocomplete: false,
-            hideOptions: false,
+            hideOptions: true,
             query: {},
         };
     }
@@ -118,7 +118,7 @@ class SearchBar extends React.Component<Props, State> {
                     </button>
                 </div>
 
-                {this.state.showAutocomplete &&
+                {this.state.showAutocomplete && this.props.autocomplete.length > 0 &&
                 <ul className="autocomplete">
                     {autocompleteItems}
                 </ul>
