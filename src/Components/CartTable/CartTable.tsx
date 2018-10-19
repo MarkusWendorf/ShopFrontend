@@ -16,31 +16,33 @@ class CartTable extends React.PureComponent<Props, {}> {
 
         return (
             <div className="cart-table">
-                <div className="item">
-                    <b className="name">Produktname</b>
-                    <b className="id">Artikelnr.</b>
-                    <b className="quantity">Anzahl</b>
-                    <b className="price">Preis</b>
+                <div className="cart-item">
+                    <b className="cart-item__name">Produktname</b>
+                    <b className="cart-item__id">Artikelnr.</b>
+                    <b className="cart-item__quantity">Anzahl</b>
+                    <b className="cart-item__price">Preis</b>
                 </div>
 
-                {cartItems.map((c: CartItem) => (
-                    <div className="item" key={c.product.id}>
-                        <div className="name">{c.product.pname}</div>
-                        <div className="id">{c.product.id}</div>
-                        <div className="quantity">{c.quantity}</div>
-                        <div className="price">{formatPrice(c.product.price * c.quantity)}</div>
-                    </div>
-                ))}
+                {cartItems.map((c: CartItem) => <Row c={c} key={c.product.id}/>)}
 
-                <div className="item total">
-                    <b className="name"/>
-                    <b className="id"/>
-                    <b className="quantity"/>
-                    <b className="price">{formattedTotal}</b>
+                <div className="cart-item total">
+                    <b className="cart-item__name"/>
+                    <b className="cart-item__id"/>
+                    <b className="cart-item__quantity"/>
+                    <b className="cart-item__price">{formattedTotal}</b>
                 </div>
             </div>
         );
     }
 }
+
+const Row = ({c}: {c: CartItem }) => (
+    <div className="cart-item" key={c.product.id}>
+        <div className="cart-item__name">{c.product.pname}</div>
+        <div className="cart-item__id">{c.product.id}</div>
+        <div className="cart-item__quantity">{c.quantity}</div>
+        <div className="cart-item__price">{formatPrice(c.product.price * c.quantity)}</div>
+    </div>
+);
 
 export default CartTable;

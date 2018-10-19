@@ -12,11 +12,11 @@ import {AddToCart} from "../../Redux/ActionTypes/CartActions";
 import {RouteComponentProps} from "react-router";
 import ButtonWithIcon from "../../Components/Buttons/ButtonWithIcon";
 
-interface OwnProps extends RouteComponentProps<{id: string}> {
+interface OwnProps extends RouteComponentProps<{ id: string }> {
 
 }
 
-interface RouterProps extends RouteComponentProps<{id: string}> {
+interface RouterProps extends RouteComponentProps<{ id: string }> {
 
 }
 
@@ -61,32 +61,31 @@ class ProductPage extends React.Component<Props, State> {
         const addToCart = (e: any) => this.props.addToCart(p);
 
         return (
-            <div className="product-container">
-                <div className="product">
-                    <h3> {p.pname}</h3>
+            <div className="product-page">
+                <h3> {p.pname}</h3>
 
-                    <div className="product-head">
-                        <img src={p.imgurl}/>
+                <div className="product-page__head">
+                    <img src={p.imgurl}/>
 
-                        <div className="add-to-cart">
-                            <StatusText status={quantityStatus(p.quantity)}/>
-                            <div className="price">{formatPrice(p.price)}</div>
-                            <ButtonWithIcon onClick={addToCart} icon={CartIcon} text="in den Warenkorb"/>
-                        </div>
-                    </div>
-
-                    <div className="description">
-                        <div className="attribute-list">
-                            {attributes}
-                        </div>
+                    <div className="add-to-cart">
+                        <StatusText status={quantityStatus(p.quantity)}/>
+                        <div className="price">{formatPrice(p.price)}</div>
+                        <ButtonWithIcon onClick={addToCart} icon={CartIcon} text="in den Warenkorb"/>
                     </div>
                 </div>
+
+                <div className="product-page__description">
+                    <div className="attribute-list">
+                        {attributes}
+                    </div>
+                </div>
+
             </div>
         );
     }
 }
 
-const mapStateToProps = ({products}: {products: StoreProducts}, ownProps: OwnProps): StateToPropsType => {
+const mapStateToProps = ({products}: { products: StoreProducts }, ownProps: OwnProps): StateToPropsType => {
 
     const productState = products.productRequest;
 

@@ -2,7 +2,7 @@
 
 .cart-table {
 
-  .item {
+  .cart-item {
     display: grid;
     grid-template-columns: 2fr 2rem 1fr;
     border-bottom: 1px dashed;
@@ -22,7 +22,7 @@
 
   }
 
-  .id {
+  .cart-item__id {
     display: none;
 
     @include for-desktop-up {
@@ -30,11 +30,11 @@
     }
   }
 
-  .price {
+  .cart-item__price {
     text-align: right;
   }
 
-  .quantity {
+  .cart-item__quantity {
     text-align: center;
   }
 }

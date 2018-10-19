@@ -31,17 +31,15 @@ class HardwarePage extends React.Component<Props, {}> {
 
         const sorted = this.props.categories.sort();
         const categories = sorted.map((category: string) => (
-            <Link className="category-tile" key={category} to={searchPath + "?category=" + category}>
+            <Link className="categories-page__tile" key={category} to={searchPath + "?category=" + category}>
                 {category}
             </Link>
         ));
 
         return (
-            <div>
-                <div className="category-tiles">
-                    {categories}
-                    {this.props.error ? <p>{this.props.error}</p> : <p/>}
-                </div>
+            <div className="categories-page">
+                {categories}
+                {this.props.error ? <p>{this.props.error}</p> : <p/>}
             </div>
         );
     }

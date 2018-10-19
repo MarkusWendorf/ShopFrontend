@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./buttons.scss";
+import "./button-with-icon.scss";
 
 interface Props {
     icon: React.SFC<any>;
@@ -16,10 +16,10 @@ class ButtonWithIcon extends React.PureComponent<PropsButton, {}> {
         const {text, icon, left, ...other} = this.props;
 
         return (
-            <button className="icon-button" {...other}>
-                {left && icon({className: "icon"})}
-                <span className="text">{text}</span>
-                {!left && icon({className: "icon"})}
+            <button className="button--icon" {...other}>
+                {left && icon({className: "button--icon__icon"})}
+                <span className="button--icon__text">{text}</span>
+                {!left && icon({className: "button--icon__icon"})}
             </button>
         );
     }

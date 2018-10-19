@@ -1,6 +1,6 @@
 @import "../../mixins";
 
-.category-tiles {
+.categories-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
@@ -9,7 +9,7 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-  .category-tile {
+  .categories-page__tile {
     display: flex;
     align-items: center;
     justify-content: center;

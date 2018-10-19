@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import {StoreAuth, StoreCart} from "../../Redux/Store/Store";
 import {cartTotal, formatPrice} from "../../Util/util";
 import {push} from "react-router-redux";
+import NavHeader, {NavSubHeader} from "./NavHeader";
 
 interface OwnProps {
 
@@ -41,65 +42,48 @@ class Navigation extends React.Component<Props, State> {
 
     public render() {
 
+        const overlayClass = "search-overlay " + (this.state.showSearch ? "" : "search-overlay--hide");
+        const mobileMenuClass = "mobile-menu " + (this.state.showMenu ? "mobile-menu--show" : "");
         const totalCart = this.props.cartTotal || 0;
 
         return (
             <nav>
-                <form className={"search-overlay " + (this.state.showSearch ? "" : "hide")} onSubmit={this.search}>
-                    <input name="search"/>
-                    <span className="close" onClick={this.hideSearch}>
+                <NavHeader
+                    onToggleMenu={this.toggleMenu}
+                    onShowSearch={this.showSearch}
+                    totalCart={totalCart}
+                />
+
+                <NavSubHeader/>
+
+                <form className={overlayClass} onSubmit={this.search}>
+                    <input className="search-overlay__input" name="search"/>
+                    <span className="search-overlay__close" onClick={this.hideSearch}>
                         <CloseIcon/>
                     </span>
                 </form>
 
-                <div className="menu">
-                    <span className="menu-icon" onClick={this.toggleMenu}>
-                        <HamburgerIcon/>
-                    </span>
-                    <span className="logo">
-                        <Link to={"/"}>
-                            Electronix
-                        </Link>
-                    </span>
-                    <span className="search-cart-icons">
-                        <span onClick={this.showSearch}>
-                            <SearchIcon/>
-                        </span>
-                        <Link to={"/warenkorb"}>
-                            <CartIcon/>
-                        </Link>
-                    </span>
-                </div>
-
-                <div className={"mobile-menu " + (this.state.showMenu ? "show" : "")}>
+                {/* mobile only */}
+                <div className={mobileMenuClass}>
                     <SidebarItems onPageChange={this.toggleMenu} loggedIn={this.props.isLoggedIn}/>
                 </div>
 
-                <ul className="category-list">
-                    <Link to={"/hardware/"}>
-                        <li>Hardware</li>
-                    </Link>
-                    <Link to={"/software"}>
-                        <li>Neuheiten</li>
-                    </Link>
-                    <Link to={"/angebote"}>
-                        <li>Angebote</li>
-                    </Link>
-                </ul>
+                <span style={{flex: 1}}/>
 
-                <span className="flex1"/>
+                {/* desktop only */}
                 <div className="shopping-cart-nav">
                     <Link to={"/warenkorb"}>
                         <CartIcon/>
                         <b>{formatPrice(totalCart)}</b>
                     </Link>
                 </div>
+
             </nav>
         );
     }
 
-    private hideSearch = (e: any) => this.setState({showSearch: false});
-    private showSearch = (e: any) => this.setState({showSearch: true});
+    private hideSearch = () => this.setState({showSearch: false});
+    private showSearch = () => this.setState({showSearch: true});
     private search = (e: any) => {
         e.preventDefault();
 

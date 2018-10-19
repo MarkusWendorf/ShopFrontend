@@ -99,10 +99,11 @@ class SearchBar extends React.Component<Props, State> {
 
         return (
             <form className="search-bar" onSubmit={this.startSearch} ref={(node: any) => this.wrapperRef = node}>
+
                 <div className="display-flex">
 
                     <input
-                        className="search-input"
+                        className="search-bar__input"
                         name="name"
                         onChange={this.onChange}
                         value={name}
@@ -110,12 +111,13 @@ class SearchBar extends React.Component<Props, State> {
                         autoComplete="off"
                     />
 
-                    <button type="submit">
+                    <button className="search-bar__search" type="submit">
                         <SearchIcon/>
                     </button>
-                    <button type="button" onClick={this.toggleOptions}>
+                    <button className="search-bar__options" type="button" onClick={this.toggleOptions}>
                         <OptionsIcon/>
                     </button>
+
                 </div>
 
                 {this.state.showAutocomplete && this.props.autocomplete.length > 0 &&
@@ -124,15 +126,14 @@ class SearchBar extends React.Component<Props, State> {
                 </ul>
                 }
 
-                <div className={"search-options " + (this.state.hideOptions ? "hide" : "")}>
-                    <SearchOptions
-                        categories={categories}
-                        category={category}
-                        priceFrom={priceFrom}
-                        priceTo={priceTo}
-                        onChange={this.updateForm}
-                    />
-                </div>
+                <SearchOptions
+                    hide={this.state.hideOptions}
+                    categories={categories}
+                    category={category}
+                    priceFrom={priceFrom}
+                    priceTo={priceTo}
+                    onChange={this.updateForm}
+                />
 
             </form>
         );

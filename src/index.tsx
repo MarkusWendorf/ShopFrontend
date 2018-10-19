@@ -7,10 +7,10 @@ import throttle from "lodash/throttle";
 import rootReducer from "./Redux/Reducers/rootReducer";
 import createBrowserHistory from "history/createBrowserHistory";
 import {routerMiddleware} from "react-router-redux";
-import "./main.scss";
 import {persistState, restoreState} from "./Redux/Store/persistState";
 import {classToPlainAction} from "./Redux/Store/classToPlainAction";
 import Main from "./Main";
+import "./main.scss";
 
 const history = createBrowserHistory();
 const routeMiddleware = routerMiddleware(history);

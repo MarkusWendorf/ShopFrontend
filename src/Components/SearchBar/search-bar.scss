@@ -5,7 +5,7 @@
   position: relative;
   margin-bottom: 1rem;
 
-  .search-input {
+  .search-bar__input {
     flex: 1;
     padding: 0.3rem 0.3rem 0.3rem 1rem;
     line-height: 1.5rem;
@@ -16,8 +16,10 @@
     font-family: 'Lato', sans-serif;
   }
 
-  button {
+  .search-bar__search, .search-bar__options {
     padding: 0.3rem 1rem;
+    border-radius: 0;
+    border: 1px solid var(--border-color);
 
     svg {
       width: 1.5rem;
@@ -31,6 +33,10 @@
 
     &:focus {
       border: 1px solid var(--color-main);
+    }
+
+    &:hover {
+      background-color: var(--color-grey);
     }
   }
 }
@@ -54,45 +60,6 @@
 
     &:hover {
       background-color: var(--color-grey);
-    }
-  }
-}
-
-.search-options {
-  display: grid;
-  border: 1px solid var(--border-color);
-  border-top: 0;
-  padding: 1rem;
-  grid-template-columns: 1fr;
-  grid-gap: 1rem;
-
-  &.hide {
-    display: none;
-  }
-
-  @include for-desktop-up {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .option {
-    display: inline-block;
-  }
-
-  label {
-    display: block;
-    padding: 0 5px 5px 0;
-  }
-
-  .range-selector {
-    display: flex;
-
-    span {
-      padding: 0 0.5rem;
-      text-align: center;
-    }
-
-    input {
-      width: 5rem;
     }
   }
 }

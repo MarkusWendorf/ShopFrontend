@@ -1,0 +1,51 @@
+
+
+
+input {
+  transition: all 0.2s;
+  background-color: white;
+  padding: 3px;
+  border: 1px solid var(--border-color);
+  outline: none;
+}
+
+button {
+  transition: all 0.2s;
+  background-color: var(--color-grey);
+  border: 1px solid var(--border-color-dark);
+  cursor: pointer;
+  border-radius: 3px;
+  color: inherit;
+  outline: none;
+  padding: 3px 1rem;
+
+  &:focus {
+    border: 1px solid var(--color-main);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:hover {
+    background-color: var(--color-positive);
+    border-color: var(--color-main);
+    color: white;
+  }
+}
+
+select {
+  color: var(--color-main);
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  padding: 5px 2.5rem 5px 0.5rem;
+  border: 1px solid var(--border-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline-color: var(--color-main);
+  background-image: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><title>Icon/pfeil_bottom</title><g fill="none" fill-rule="evenodd"><path d="M20.04 13.023c.302-.302.79-.302 1.093 0 .152.15.227.35.227.547 0 .198-.075.396-.227.546l-5.156 5.157c-.302.303-.792.303-1.093 0l-5.157-5.157c-.303-.302-.303-.79 0-1.093.302-.302.792-.302 1.093 0l4.61 4.61 4.61-4.61z" fill="%23414141"/><path stroke="%23414141" stroke-width="11" d="M-1147.5-215.5h1782v519h-1782z"/></g></svg>');
+  background-position: calc(100% - 0.5rem) center;
+  background-repeat: no-repeat;
+  background-color: var(--color-grey);
+  background-size: 2rem;
+}

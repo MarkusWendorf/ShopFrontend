@@ -17,16 +17,15 @@ const Pagination = (props: Props) => {
 
     return (
         <div className="pagination">
-            <div>{current + "|" + props.lastPage}</div>
-            <div className="prev" onClick={prev}>
+            <div className="pagination__prev" onClick={prev}>
                 <ChevronLeftIcon
                     style={disable(current === 1)}
                 />
             </div>
 
-            <span className="current">Seite {current}</span>
+            <span className="pagination__current">Seite {current}</span>
 
-            <div className="next" onClick={next}>
+            <div className="pagination__next" onClick={next}>
                 <ChevronRightIcon
                     style={disable(props.lastPage === current)}
                 />

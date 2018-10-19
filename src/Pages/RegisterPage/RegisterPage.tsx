@@ -33,8 +33,8 @@ class RegisterPage extends React.Component<Props, State> {
         const error = this.props.authError;
 
         return (
-            <div className="login-register-page">
-                <div className="login-or-register">
+            <div className="login-page">
+                <div className="login-page__switch">
                     <h2>Registrieren</h2>
                     <span>
                         oder&nbsp;

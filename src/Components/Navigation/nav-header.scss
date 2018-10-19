@@ -1,0 +1,78 @@
+@import "../../mixins";
+
+.nav-header {
+  display: inline-flex;
+  align-items: flex-end;
+  padding: 0.5rem 1rem;
+  width: 100%;
+
+  @include for-tablet-landscape-up {
+    width: auto;
+    padding: 0.5rem 0;
+  }
+
+  .nav-header__icon {
+    display: inline-block;
+
+    @include for-tablet-landscape-up {
+      display: none;
+    }
+  }
+
+  .nav-header__logo {
+    display: inline-block;
+    font-weight: 900;
+    font-size: 2rem;
+    margin-right: 1rem;
+    flex: 1;
+
+    @include for-tablet-landscape-up {
+      display: inline-block;
+    }
+  }
+
+  .nav-header__search-cart-icons {
+
+    span {
+      margin-right: 1rem;
+    }
+
+    @include for-tablet-landscape-up {
+      display: none;
+    }
+  }
+
+}
+
+
+.nav-subheader {
+  display: flex;
+  background-color: var(--color-grey);
+
+  a {
+    display: inline-block;
+    flex: 1;
+    padding: 0.8rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  a:hover {
+    background-color: var(--color-grey-dark);
+  }
+
+  @include for-tablet-landscape-up {
+    display: inline-flex;
+    background-color: transparent;
+
+    a {
+      font-size: 1.5rem;
+      padding: 0 0.8rem;
+    }
+
+    a:hover {
+      background-color: transparent;
+    }
+  }
+
+}

@@ -15,17 +15,17 @@ class ProductTile extends React.PureComponent<Props, {}> {
 
         return (
             <Link to={linkToProduct(p.id)} className="product-tile" title={p.pname}>
-                <div className="product-title">{p.pname}</div>
-                <div className="image-wrapper">
+                <div className="product-tile__title">{p.pname}</div>
+                <div className="product-tile__image">
                     <img src={p.imgurl} alt={p.pname}/>
                 </div>
-                <div className="product-info">
-                <span className="availability">
-                    <StatusText status={quantityStatus(p.quantity)}/>
-                </span>
-                    <span className="price">
-                    {formatPrice(p.price)}
-                </span>
+                <div className="product-tile__info">
+                    <span className="product-tile__availability">
+                        <StatusText status={quantityStatus(p.quantity)}/>
+                    </span>
+                    <span className="product-tile__price">
+                        {formatPrice(p.price)}
+                    </span>
                 </div>
             </Link>
         );

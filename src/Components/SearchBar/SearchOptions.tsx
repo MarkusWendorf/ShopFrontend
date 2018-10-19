@@ -1,6 +1,8 @@
 import * as React from "react";
+import "./search-options.scss";
 
 interface Props {
+    hide: boolean;
     categories: string[];
     category: string;
     priceFrom: number;
@@ -16,9 +18,11 @@ export default class SearchOptions extends React.PureComponent<Props, State> {
 
     public render() {
 
+        const optionsClass = "search-options " + (this.props.hide ? "search-options--hide" : "");
+
         return (
-            <>
-                <span className="option">
+            <div className={optionsClass}>
+                <span className="search-options__option">
                     <label>Preis-Bereich</label>
                     <div className="range-selector">
 
@@ -46,7 +50,7 @@ export default class SearchOptions extends React.PureComponent<Props, State> {
                 </span>
 
                 {this.props.categories &&
-                <span className="option">
+                <span className="search-options__option">
                     <label>Kategorie</label>
                     <select name="category" value={this.props.category} onChange={this.props.onChange}>
                         <option/>
@@ -57,7 +61,7 @@ export default class SearchOptions extends React.PureComponent<Props, State> {
                 </span>
                 }
 
-            </>
+            </div>
         );
     }
 
