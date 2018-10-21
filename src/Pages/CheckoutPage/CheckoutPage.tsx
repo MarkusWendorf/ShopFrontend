@@ -107,7 +107,7 @@ class CheckoutPage extends React.Component<PropsType, State> {
                 <ul className="steps">
                     {this.steps.map((step: string, i: number) => (
                         <li
-                            className={i === currentStep ? "active" : ""}
+                            className={i <= currentStep ? "active" : ""}
                             key={step}
                         >
                             {step}
