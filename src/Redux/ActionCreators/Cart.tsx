@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {RouterAction} from "react-router-redux";
+import {RouterAction} from "connected-react-router";
 import {postApiAuth} from "../../Util/util";
 import {AddressInformation, CartItem} from "../../Util/model";
 import {CartAction, ValidateCartFailed, ValidateCartRequest, ValidateCartSuccessful} from "../ActionTypes/CartActions";

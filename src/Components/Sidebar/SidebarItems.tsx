@@ -39,7 +39,7 @@ const SidebarItems = (props: Props) => (
             <li>Zahlungsarten</li>
         </Link>
         <Link to={"/lieferung"}>
-            <li>Versand und Lieferung</li>
+            <li>Versand / Lieferung</li>
         </Link>
         <Link to={"/ruecksendungen"}>
             <li>Rücksendungen</li>

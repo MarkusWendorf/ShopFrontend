@@ -2,7 +2,7 @@ import {ApiResponse, CartItem} from "./model";
 import {API_ROOT, productsPath} from "./config";
 import {getToken} from "../index";
 import {Logout} from "../Redux/ActionTypes/AuthActions";
-import {push} from "react-router-redux";
+import {push} from "connected-react-router";
 
 export const linkToProduct = (id: string) => {
     return productsPath + "/" + id;

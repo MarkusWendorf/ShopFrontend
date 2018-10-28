@@ -6,7 +6,7 @@ import SidebarItems from "../Sidebar/SidebarItems";
 import {connect} from "react-redux";
 import {StoreAuth, StoreCart} from "../../Redux/Store/Store";
 import {cartTotal, formatPrice} from "../../Util/util";
-import {push} from "react-router-redux";
+import {push} from "connected-react-router";
 import NavHeader, {NavSubHeader} from "./NavHeader";
 
 interface OwnProps {

@@ -6,19 +6,19 @@ import logger from "redux-logger";
 import throttle from "lodash/throttle";
 import rootReducer from "./Redux/Reducers/rootReducer";
 import createBrowserHistory from "history/createBrowserHistory";
-import {routerMiddleware} from "react-router-redux";
+import {connectRouter, routerMiddleware} from "connected-react-router";
 import {persistState, restoreState} from "./Redux/Store/persistState";
 import {classToPlainAction} from "./Redux/Store/classToPlainAction";
 import Main from "./Main";
 import "./main.scss";
 
+const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const history = createBrowserHistory();
-const routeMiddleware = routerMiddleware(history);
 const stateFromStorage = restoreState();
 const store = createStore(
-    rootReducer,
+    connectRouter(history)(rootReducer),
     stateFromStorage,
-    applyMiddleware(thunk, classToPlainAction, routeMiddleware, logger),
+    composeEnhancers(applyMiddleware(thunk, classToPlainAction, routerMiddleware(history), logger)),
 );
 
 export const getToken = () => store.getState().auth.token;

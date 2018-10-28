@@ -1,8 +1,8 @@
 import * as React from "react";
-import SidebarItems from "./SidebarItems";
-import "./sidebar.scss";
 import {connect} from "react-redux";
+import SidebarItems from "./SidebarItems";
 import {StoreAuth, StoreCart} from "../../Redux/Store/Store";
+import "./sidebar.scss";
 
 interface OwnProps {
 

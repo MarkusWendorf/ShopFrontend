@@ -65,10 +65,6 @@ export const queryProducts = (stringQuery: string) => {
 
         try {
 
-            if (!queryString.parse(stringQuery).lastKey) {
-                dispatch(new QueryProductsClear());
-            }
-
             dispatch(new QueryProductsRequest());
             const response = await getApi(searchPath + "?" + stringQuery);
 

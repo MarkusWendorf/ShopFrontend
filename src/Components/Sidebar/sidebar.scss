@@ -38,6 +38,8 @@
     padding-left: 1rem;
     border-bottom: 1px solid var(--border-color);
     cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.3px;
 
     @include for-tablet-landscape-up {
       font-size: 0.8rem;

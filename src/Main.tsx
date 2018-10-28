@@ -1,6 +1,5 @@
 import * as React from "react";
 import {Provider} from "react-redux";
-import {ConnectedRouter} from "react-router-redux";
 import Navigation from "./Components/Navigation/Navigation";
 import {Route, Switch} from "react-router";
 import {productsPath} from "./Util/config";
@@ -19,6 +18,7 @@ import LogoutPage from "./Pages/LogoutPage/LogoutPage";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import HomePage from "./Pages/HomePage/HomePage";
 import {History} from "history";
+import {ConnectedRouter} from "connected-react-router";
 
 interface Props {
     history: History;

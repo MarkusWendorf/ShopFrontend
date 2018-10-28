@@ -65,7 +65,7 @@ class SearchResultPage extends React.Component<Props, State> {
             />
         );
 
-        const noResults = <p>{this.props.errorMessage || "Keine Treffer"}</p>;
+        const noResults = !this.props.isFetching && <p>{this.props.errorMessage || "Keine Treffer"}</p>;
 
         return (
             <div>

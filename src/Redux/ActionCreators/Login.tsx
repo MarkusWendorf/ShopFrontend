@@ -8,7 +8,7 @@ import {
     RegisterSuccessful,
 } from "../ActionTypes/AuthActions";
 import {Dispatch} from "redux";
-import {push, RouterAction} from "react-router-redux";
+import {push, RouterAction} from "connected-react-router";
 import {loginPath, registerPath} from "../../Util/config";
 
 export const login = (email: string, password: string) => {

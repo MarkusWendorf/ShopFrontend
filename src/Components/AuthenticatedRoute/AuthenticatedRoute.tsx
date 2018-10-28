@@ -38,4 +38,4 @@ const mapStateToProps = (state: StoreState, ownProps: OwnProps): StateToPropsTyp
     auth: state.auth,
 });
 
-export default connect(mapStateToProps, null)(AuthenticatedRoute);
+export default connect(mapStateToProps)(AuthenticatedRoute);

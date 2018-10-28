@@ -10,7 +10,7 @@ import Overview from "./Overview";
 import ShippingAndBillingAddress from "./ShippingAndBillingAddress";
 import {CheckoutAddAddresses, CheckoutAddCart, CheckoutResetToStep0} from "../../Redux/ActionTypes/CheckoutActions";
 import PurchaseComplete from "./PurchaseComplete";
-import {push} from "react-router-redux";
+import {push} from "connected-react-router";
 
 interface OwnProps {
 
