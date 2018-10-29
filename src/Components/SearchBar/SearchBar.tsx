@@ -146,7 +146,7 @@ class SearchBar extends React.Component<Props, State> {
         const cleanQuery = removeEmptyValues(this.state.query);
         const newQuery = queryString.stringify({...cleanQuery, page: 1});
         this.props.history.push({pathname: searchPath, search: newQuery});
-    }
+    };
 
     private onChange = (e: any) => {
 
@@ -160,29 +160,29 @@ class SearchBar extends React.Component<Props, State> {
         }
 
         this.updateForm(e);
-    }
+    };
 
     private updateForm = (e: any) => {
         this.setState({query: {...this.state.query, [e.target.name]: e.target.value}});
-    }
+    };
 
     private toggleOptions = (e: any) => {
         this.setState({hideOptions: !this.state.hideOptions, showAutocomplete: false});
-    }
+    };
 
     private showAutocomplete = () => {
         this.setState({showAutocomplete: true});
-    }
+    };
 
     private hideAutocomplete = () => {
         this.setState({showAutocomplete: false});
-    }
+    };
 
     private handleClickOutside = (event: any) => {
         if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
             this.setState({showAutocomplete: false});
         }
-    }
+    };
 }
 
 const mapStateToProps = (state: StoreState, ownProps: OwnProps): StateToPropsType => {

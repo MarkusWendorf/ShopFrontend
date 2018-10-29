@@ -60,5 +60,5 @@ export default class AddressForm extends React.PureComponent<Props, {}> {
     
     private update = (key: string) => (e: any) => {
         this.props.update(key, e);
-    }
+    };
 }

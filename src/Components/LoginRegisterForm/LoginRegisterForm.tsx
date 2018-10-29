@@ -25,5 +25,3 @@ export default class LoginRegisterForm extends React.Component<Props, {}> {
     }
 
 }
-
-

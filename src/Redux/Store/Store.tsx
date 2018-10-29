@@ -5,7 +5,7 @@ import {
     JwtClaims,
     Product,
     ProductsByCategory,
-    ValidatedCart
+    ValidatedCart,
 } from "../../Util/model";
 
 export interface StoreState {

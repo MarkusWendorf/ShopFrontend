@@ -55,7 +55,7 @@ class RegisterPage extends React.Component<Props, State> {
         const password = form.password.value;
 
         this.props.register(email, password);
-    }
+    };
 }
 
 const mapStateToProps = ({auth}: { auth: StoreAuth }, ownProps: OwnProps): StateToPropsType => ({

@@ -80,19 +80,19 @@ class ShippingAndBillingAddress extends React.Component<Props, State> {
 
         const billing = this.state.shippingEqualBilling ? this.state.shipping : this.state.billing;
         this.props.onNextStep(this.state.shipping, billing);
-    }
+    };
 
     private updateShipping = (key: string, e: any) => {
         this.setState({shipping: {...this.state.shipping, [key]: e.target.value}});
-    }
+    };
 
     private updateBilling = (key: string, e: any) => {
         this.setState({billing: {...this.state.billing, [key]: e.target.value}});
-    }
+    };
 
     private setShippingEqualBilling = (e: any) => {
         this.setState({shippingEqualBilling: !this.state.shippingEqualBilling});
-    }
+    };
 }
 
 export default ShippingAndBillingAddress;

@@ -90,7 +90,7 @@ class SearchResultPage extends React.Component<Props, State> {
         const updatedQuery = queryString.stringify({...query, page: newPage});
 
         this.props.history.push(path + "?" + updatedQuery);
-    }
+    };
 }
 
 const mapStateToProps = ({products}: { products: StoreProducts }, ownProps: OwnProps): StateToPropsType => {

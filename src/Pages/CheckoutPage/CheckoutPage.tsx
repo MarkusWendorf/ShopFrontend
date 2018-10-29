@@ -129,7 +129,7 @@ class CheckoutPage extends React.Component<PropsType, State> {
         } else {
             this.props.purchase(cart.id, address);
         }
-    }
+    };
 }
 
 const mapStateToProps = ({cart, checkout}: { cart: StoreCart, checkout: StoreCheckout }, ownProps: OwnProps):

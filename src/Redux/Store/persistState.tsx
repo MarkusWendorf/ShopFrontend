@@ -29,5 +29,5 @@ export const restoreState = (): StoreState => {
 
 const getInitialState = (): StoreState => {
     // run empty object through root reducer to get initial state from all reducers
-    return rootReducer({} as StoreState, {} as AnyAction);
+    return rootReducer({} as any, {} as any);
 };

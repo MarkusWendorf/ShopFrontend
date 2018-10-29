@@ -89,11 +89,11 @@ class Navigation extends React.Component<Props, State> {
 
         this.props.redirectTo("/search?name=" + e.target.search.value);
         this.setState({showSearch: false});
-    }
+    };
 
     private toggleMenu = () => {
         this.setState({showMenu: !this.state.showMenu});
-    }
+    };
 }
 
 const mapDispatchToProps = (dispatch: any): DispatchToPropsType => ({

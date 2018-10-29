@@ -1,7 +1,7 @@
 import * as React from "react";
 import {login} from "../../Redux/ActionCreators/Login";
 import {connect} from "react-redux";
-import {StoreAuth, StoreRouting} from "../../Redux/Store/Store";
+import {StoreAuth} from "../../Redux/Store/Store";
 import {Link} from "react-router-dom";
 import "./login.scss";
 import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
@@ -46,7 +46,6 @@ class LoginPage extends React.Component<Props, State> {
                     </span>
                 </div>
 
-
                 <LoginRegisterForm onSubmit={this.handleSubmit} submitText={"Login"}/>
                 <p>{error}</p>
             </div>
@@ -60,7 +59,7 @@ class LoginPage extends React.Component<Props, State> {
         const password = form.password.value;
 
         this.props.login(email, password);
-    }
+    };
 }
 
 const mapStateToProps = ({auth}: { auth: StoreAuth }, ownProps: OwnProps): StateToPropsType => ({
